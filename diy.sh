@@ -5,14 +5,8 @@
 #src-git small -depth=1 https://github.com/kenzok8/small-package
 
 
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.99.1/g' package/base-files/files/bin/config_generate
-
-# Modify hostname
-sed -i 's/OpenWrt/SEED AC3/g' package/base-files/files/bin/config_generate
-
-
-# 设置主机名映射，解决安卓原生 TV 无法联网的问题
-uci add dhcp domain
-uci set "dhcp.@domain[-1].name=time.android.com"
-uci set "dhcp.@domain[-1].ip=203.107.6.88"
+src-git packages https://github.com/immortalwrt/packages.git^e93a938c63124832d549c41da3157e2ec40fbe05
+src-git luci https://github.com/immortalwrt/luci.git^ed7692cb08a953e2e503287e0337c8b548cf4ba5
+src-git routing https://github.com/openwrt/routing.git^76c933906c616a4cdf865611af0a381787bd87b8
+src-git telephony https://github.com/openwrt/telephony.git^2618106d5846a4a542fdf5809f0d3ed228ce439b
+src-git video https://github.com/openwrt/video.git^094bf58da6682f895255a35a84349a79dab4bf95
